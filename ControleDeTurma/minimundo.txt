@@ -1,0 +1,24 @@
+MINIMUNDO
+
+Faça o modelo conceitual de um Banco de Dados que dará suporte a uma aplicação que tem como objetivo realizar o controle turmas de um curso preparatório para concursos, 
+sabendo que: 
+
+- O curso possui várias turmas 
+- Cada turma tem pelo menos uma disciplina e pelo menos um aluno 
+- Toda turma tem um código de identificação e a sala onde serão realizadas as aulas 
+- Toda disciplina é identificada por um código e possui nome e carga horária 
+- Uma disciplina pode estar vinculada a várias turmas  
+- Cada disciplina em uma turma é ministrada por um professor 
+- Um professor pode ministrar várias disciplinas na mesma turma ou em turmas diferentes 
+- Todo aluno é identificado pela matricula, e só pode ser alocado em uma única turma 
+
+
+Deve ser possível verificar:  
+ 
+- o nome do curso e a sua carga horária total 
+- as turmas de um determinado turno 
+- o nome e a titulação (graduado, especialista, mestre ou doutor) do(s) professore(s) que lecionam uma determinada disciplina 
+- o e-mail do aluno identificado pelo nome 
+- os dados pessoais do aluno (cpf, rg, data de nascimento e endereço) identificado pelo nome 
+- o(s) telefone(s) do aluno identificado pelo matricula  
+- os alunos que moram em um determinado bairro 
