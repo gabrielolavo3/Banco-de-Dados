@@ -10,26 +10,28 @@ create table Curso
 
 create table Turma
 (
-	IdTurma int auto_increment,
+	IdTurma int primary key auto_increment,
     Sala varchar(12),
     Turno varchar(15) not null,
     FK_Curso_idCurso int,
-    PRIMARY KEY(
-		idTurma, 
-        FK_Curso_idCurso
-	)
+    
+    -- Adicionando Chave Estrangeira
+    CONSTRAINT fkCurso FOREIGN KEY (FK_Curso_idCurso) 
+    REFERENCES Curso(IdCurso) 
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE
 );
 
 create table Disciplina
 (
-	IdDisciplina int auto_increment,
+	IdDisciplina int primary key auto_increment,
     Nome varchar(30) not null,
     CargaHoraria int
 );
 
 create table Professor
 (
-	IdProfessor int auto_increment,
+	IdProfessor int primary key auto_increment,
     Nome varchar(20) not null,
     Sobrenome varchar(30) not null,
     Titulacao varchar(25)
@@ -41,15 +43,23 @@ create table Ministra
     FK_Disciplina_IdDisciplina int,
     FK_Professor_IdProfessor int,
     PRIMARY KEY (
-		FK_Turma_IdTurma, 
-		FK_Disciplina_IdDisciplina, 
-		FK_Professor_IdProfessor
-    )
+		FK_Turma_IdTurma, FK_Disciplina_IdDisciplina, FK_Professor_IdProfessor
+    ),
+    
+    CONSTRAINT fkTurma FOREIGN KEY(FK_Turma_IdTurma) REFERENCES Turma(IdTurma)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE,
+    CONSTRAINT fkDisciplina FOREIGN KEY(FK_Disciplina_IdDisciplina) REFERENCES Disciplina(IdDisciplina)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+    CONSTRAINT fkProfessor FOREIGN KEY(FK_Professor_IdProfessor) REFERENCES Professor(IdProfessor)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 create table Aluno
 (
-	Matricula varchar(25),
+	Matricula varchar(25) primary key,
     Nome varchar(20) not null,
     Sobrenome varchar(30) not null,
     CPF char(11) unique not null,
@@ -62,20 +72,20 @@ create table Aluno
     Cidade varchar(45),
     Estado char(3),
     FK_Turma_IdTurma int,
-    PRIMARY KEY(
-		Matricula, 
-        FK_Turma_IdTurma
-	)
+    
+    CONSTRAINT fkIdTurma FOREIGN KEY(FK_Turma_IdTurma) REFERENCES Turma(IdTurma)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE
 );
 
 create table Telefone
 (
-	IdTelefone int auto_increment,
+	IdTelefone int primary key auto_increment,
     DDD int not null,
     Numero int not null,
     FK_Aluno_Matricula varchar(25),
-    PRIMARY KEY(
-		IdTelefone, 
-        FK_Aluno_Matricula
-	)
+    
+    CONSTRAINT fkAluno FOREIGN KEY(FK_Aluno_Matricula) REFERENCES Aluno(Matricula)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE
 );
