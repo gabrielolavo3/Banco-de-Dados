@@ -1,2 +1,2 @@
 # Banco-de-Dados
- Hi, Devs! Esse é um repositório remoto para as minhas práticas com Bando de Dados: Modelo de Entidade-Relacionamento, Diagrama de Entidade-Relacionamento e Scripts do MySQL🎲
+ Hi, Devs! Esse é um repositório remoto para as minhas práticas com Bando de Dados: MER, DER e Scripts do MySQL🎲
